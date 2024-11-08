@@ -1,8 +1,5 @@
-const API_KEY = "a870c52cd08d4a75bd3119d39433d18a";
-
-const PROXY_URL = "https://cors-anywhere.herokuapp.com/";
-
-const url = "https://newsapi.org/v2/everything?q=";
+// // Your Vercel Proxy URL
+const url = "/api/proxy"; // This calls the serverless function
 
 window.addEventListener('load', () => fetchNews("India"));
 
@@ -12,7 +9,7 @@ function reload() {
 
 async function fetchNews(query) {
   try {
-    const res = await fetch(`${PROXY_URL}${url}${query}&apikey=${API_KEY}`);
+    const res = await fetch(`${url}?query=${query}`); // Call your Vercel serverless function
     if (!res.ok) {
       throw new Error(`HTTP error! Status: ${res.status}`);
     }
@@ -28,9 +25,10 @@ function bindData(articles) {
   const cardsContainer = document.getElementById('cards-container');
   const newsCardTemplate = document.getElementById('template-news-card');
 
-  cardsContainer.innerHTML = ''; 
+  cardsContainer.innerHTML = ''; // Clear previous articles
+
   articles.forEach(article => {
-    if (!article.urlToImage) return; 
+    if (!article.urlToImage) return; // Skip if no image
     const cardClone = newsCardTemplate.content.cloneNode(true);
     fillDataInCard(cardClone, article);
     cardsContainer.appendChild(cardClone);
@@ -53,6 +51,7 @@ function fillDataInCard(cardClone, article) {
 
   newsSource.innerHTML = `${article.source.name} . ${date}`;
 
+  // Open article link when clicked
   cardClone.firstElementChild.addEventListener("click", () => {
     window.open(article.url, "_blank");
   });
@@ -68,6 +67,7 @@ function onNavItemClick(id) {
   currentSelectedNavItem.classList.add('active');
 }
 
+// Search functionality
 const searchButton = document.getElementById("search-button");
 const searchText = document.getElementById("search-text");
 
