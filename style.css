@@ -157,17 +157,15 @@ main {
     margin-block: 12px;
 }
 
-/* Styles for the hamburger menu */
 .hamburger-menu {
     display: none;
     font-size: 24px;
     background: none;
     border: none;
     cursor: pointer;
-    margin-top: -1.7rem;
+    margin-top: -1.9rem;
 }
 
-/* Media Queries for Responsive Design */
 @media (max-width: 768px) {
     .main-nav {
         flex-direction: column;
@@ -190,7 +188,7 @@ main {
     }
 
     .nav-links.open {
-        max-height: 300px; /* Adjust as needed */
+        max-height: 300px;
     }
 
     .hamburger-menu {
