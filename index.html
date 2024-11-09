@@ -8,27 +8,26 @@
 </head>
 <body>
   
- <nav>
-    <div class="main-nav container flex">
-        <a href="#" onclick="reload()" class="Aditya-News flex ">
-            <img src="assets/newslogo.jpg"  alt="Aditya News"> &nbsp; <h5> Aditya ke Akhabar</h5>
-        </a>
-        <div class="nav-links">
-            <ul class="flex">
-               <li class="hover-link nav-items" id="ipl" onclick="onNavItemClick('ipl')">IPL</li>
-               <li class="hover-link nav-items" id="finance"  onclick="onNavItemClick('finance')">Finance</li>
-               <li class="hover-link nav-items" id="politics"  onclick="onNavItemClick('politics')">Politics</li>
-            </ul>
+    <nav>
+        <div class="main-nav container flex">
+            <a href="#" onclick="reload()" class="Aditya-News flex">
+                <img src="assets/newslogo.jpg" alt="Aditya News"> &nbsp; <h5> Aditya ke Akhabar</h5>
+            </a>
+            <button id="menu-toggle" class="hamburger-menu">&#9776;</button> <!-- Added menu button -->
+            <div class="nav-links" id="nav-links">
+                <ul class="flex">
+                   <li class="hover-link nav-items" id="ipl" onclick="onNavItemClick('ipl')">IPL</li>
+                   <li class="hover-link nav-items" id="finance" onclick="onNavItemClick('finance')">Finance</li>
+                   <li class="hover-link nav-items" id="politics" onclick="onNavItemClick('politics')">Politics</li>
+                </ul>
+            </div>
+            <div class="search-bar flex">
+                <input type="text" class="news-input" placeholder="e.g IPL" id="search-text">
+                <button class="search-button" id="search-button">Search</button>
+            </div>
         </div>
-         <div class="search-bar flex">
-            <input type="text" class="news-input" placeholder="e.g IPL" id="search-text">
-            <button class="search-button" id="search-button">Search</button>
-         </div>
-
-    </div>
-
-
- </nav>
+    </nav>
+    
 
 <main>
     <div class="cards-container container flex" id="cards-container">
@@ -51,6 +50,15 @@
     </div>
 </template>
 
-<script src="script.js" ></script>  
+<script src="script.js" ></script> 
+<script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+    });
+
+</script> 
 </body>
 </html>
